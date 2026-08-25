@@ -5,6 +5,7 @@ packages:
   - '!packages/ops/ssh-monitor'
   - '!packages/ops/ssh-connection'
   - '!packages/ops/ssh-ops'
+  - '!packages/ops/ops-workspace'
   # The Landlock launcher is developed with its harness consumers but keeps
   # its native build and publication scripts under native/landlock-run.
   - native/landlock-run
