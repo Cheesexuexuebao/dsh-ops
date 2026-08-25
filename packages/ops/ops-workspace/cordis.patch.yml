@@ -1,5 +1,0 @@
-# Fixed「运维」workspace. Keep Host directoryPicker (apiproxy requires it);
-# 「添加工作区」is hidden/blocked in the client half.
-- insert:
-    - id: ops-workspace
-      name: 'dsh-ops-workspace'
