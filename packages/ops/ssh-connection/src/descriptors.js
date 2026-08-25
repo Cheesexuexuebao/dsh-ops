@@ -1,0 +1,48 @@
+/**
+ * Invocation descriptors for the `sshConnection` Remote — one source of truth
+ * consumed by both the host TYPERT manifest (typert.js) and the client
+ * contribution (remote.js), mirroring the shape the repo's typert generator
+ * emits.
+ */
+import * as S from "./schemas.js";
+
+const PACKAGE = "dsh-ssh-connection";
+const NS = "sshConnection";
+
+function def(method, requestSchema, requestType, resultSchema, resultType) {
+  return {
+    id: `${PACKAGE}#${NS}/${method}`,
+    service: NS,
+    namespace: NS,
+    method,
+    invocation: { kind: "direct" },
+    parameters: [
+      {
+        name: "request",
+        wire: "request",
+        source: "json",
+        codec: { mode: "strict", typeSymbol: `${PACKAGE}/types#${requestType}`, schema: requestSchema }
+      }
+    ],
+    result: {
+      mode: "strict",
+      typeSymbol: `${PACKAGE}/types#${resultType}`,
+      schema: resultSchema
+    },
+    sourceLocation: { file: "src/index.js", line: 1, column: 1 }
+  };
+}
+
+export const DESCRIPTORS = [
+  def("list", S.listRequestSchema, "SshListRequest", S.listResultSchema, "SshListResult"),
+  def("connect", S.connectRequestSchema, "SshConnectRequest", S.connectResultSchema, "SshConnectResult"),
+  def("profileList", S.profileListRequestSchema, "SshProfileListRequest", S.profileListResultSchema, "SshProfileListResult"),
+  def("profileSave", S.profileSaveRequestSchema, "SshProfileSaveRequest", S.profileSaveResultSchema, "SshProfileSaveResult"),
+  def("profileDelete", S.profileDeleteRequestSchema, "SshProfileDeleteRequest", S.profileDeleteResultSchema, "SshProfileDeleteResult"),
+  def("profileConnect", S.profileConnectRequestSchema, "SshProfileConnectRequest", S.profileConnectResultSchema, "SshProfileConnectResult"),
+  def("groupList", S.groupListRequestSchema, "SshGroupListRequest", S.groupListResultSchema, "SshGroupListResult"),
+  def("groupSave", S.groupSaveRequestSchema, "SshGroupSaveRequest", S.groupSaveResultSchema, "SshGroupSaveResult"),
+  def("groupDelete", S.groupDeleteRequestSchema, "SshGroupDeleteRequest", S.groupDeleteResultSchema, "SshGroupDeleteResult"),
+  def("disconnect", S.disconnectRequestSchema, "SshDisconnectRequest", S.disconnectResultSchema, "SshDisconnectResult"),
+  def("setActive", S.setActiveRequestSchema, "SshSetActiveRequest", S.setActiveResultSchema, "SshSetActiveResult")
+];
