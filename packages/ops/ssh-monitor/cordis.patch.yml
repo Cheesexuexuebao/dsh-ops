@@ -1,0 +1,5 @@
+# dsh-ssh-monitor: Host RPC + browser drawer. Requires ctx.ssh from
+# @deepseek-ai/dsh-ssh-ssh2 (typically mounted by dsh-ssh-ops in the same profile).
+- insert:
+    - id: ssh-monitor
+      name: 'dsh-ssh-monitor'
