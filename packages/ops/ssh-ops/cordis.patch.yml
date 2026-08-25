@@ -1,0 +1,5 @@
+# dsh-ssh-ops: workbench only. Transport + resources come from dsh-ssh-connection
+# (must be mounted earlier in the profile bundles).
+- insert:
+    - id: ssh-ops
+      name: 'dsh-ssh-ops'

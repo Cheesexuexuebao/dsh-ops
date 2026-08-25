@@ -1,0 +1,6 @@
+packages:
+  - '.'
+allowBuilds:
+  ssh2: true
+  cpu-features: true
+  esbuild: true
