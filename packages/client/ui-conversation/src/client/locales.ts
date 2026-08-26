@@ -240,6 +240,8 @@ export const en = {
   'access.confirm.cancel': 'Cancel',
   'access.confirm.enable': 'Enable Full access',
   'hero.headline': 'Conversation-driven remote ops',
+  'hero.preview': 'Preview',
+  'hero.chooseWorkspace': 'Choose workspace',
   'session.hierarchy': 'Session hierarchy',
   'details.title': 'Details',
   'details.close': 'Close details',
