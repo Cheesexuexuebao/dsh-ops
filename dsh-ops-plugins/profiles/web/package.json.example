@@ -1,0 +1,25 @@
+{
+  "name": "dsh-profile-web-ops",
+  "private": true,
+  "comment": "Example only. Copy is NOT used by DSH automatically. Run scripts/setup-web-profile.ps1 instead, or dsh plugin add with your clone path.",
+  "dsh": {
+    "profile": {
+      "bundles": [
+        "@deepseek-ai/dsh-base",
+        "@deepseek-ai/dsh-web-app",
+        "dsh-ssh-connection",
+        "dsh-ssh-ops",
+        "dsh-ssh-monitor",
+        "dsh-ops-workspace",
+        "dsh-ops-skin"
+      ]
+    }
+  },
+  "dependencies": {
+    "dsh-ops-workspace": "file:../../ops-workspace",
+    "dsh-ops-skin": "file:../../ops-skin",
+    "dsh-ssh-connection": "file:../../ssh-connection",
+    "dsh-ssh-monitor": "file:../../ssh-monitor",
+    "dsh-ssh-ops": "file:../../ssh-ops"
+  }
+}

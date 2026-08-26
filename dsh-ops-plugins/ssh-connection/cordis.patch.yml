@@ -1,0 +1,8 @@
+# dsh-ssh-connection bundle patch: transport provider first, then the connection/resources plugin.
+# Install with: dsh plugin --profile web add dsh-ssh-connection
+# Requires @deepseek-ai/dsh-ssh-ssh2 (and its definition) to be resolvable in the profile.
+- insert:
+    - id: ssh-ssh2
+      name: '@deepseek-ai/dsh-ssh-ssh2'
+    - id: ssh-connection
+      name: 'dsh-ssh-connection'

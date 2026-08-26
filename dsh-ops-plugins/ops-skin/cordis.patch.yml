@@ -1,0 +1,4 @@
+# Cyan tech skin for 运维智能体. Client-only visual layer.
+- insert:
+    - id: ops-skin
+      name: 'dsh-ops-skin'

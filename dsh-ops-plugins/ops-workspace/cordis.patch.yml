@@ -1,0 +1,38 @@
+# Ops product policy:
+# - Fixed「运维」workspace (Host directoryPicker stays; client hides「添加工作区」).
+# - Disable DSH self-extension (dynamic Cordis plugins + create-mode UI).
+# - Lock agent composition to standard (no preset picker).
+# - Bind webserver on all interfaces (CLI --host 0.0.0.0 is refused; patch instead).
+- insert:
+    - id: ops-workspace
+      name: 'dsh-ops-workspace'
+
+# Listen on all interfaces; port still follows --port / default 3080.
+- id: webserver
+  inject: [webStartup]
+  config:
+    host: '0.0.0.0'
+    port: !!js ctx.webStartup.port ?? 3080
+
+# Dynamic Cordis plugin runtime + browser panel (scheme A).
+- id: cordis-host-runner
+  disabled: true
+- id: cordis-client-runner
+  disabled: true
+- id: ui-cordis
+  disabled: true
+
+# Hide mode chip / settings roster; new sessions use agent-presets.default.
+- id: ui-agent-preset
+  disabled: true
+
+# Lock permission default via Host settings; hide settings row + /permission popup UI.
+- id: ui-permission
+  disabled: true
+
+# Deployment default + ignore ~/.dsh/.agent-presets authoring root.
+# composeProfile still injects the shipped roots path after this layer.
+- id: agent-presets
+  config:
+    default: standard
+    includeUserRoot: false

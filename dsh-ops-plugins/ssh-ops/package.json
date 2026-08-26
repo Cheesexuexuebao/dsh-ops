@@ -1,0 +1,104 @@
+{
+  "name": "dsh-ssh-ops",
+  "description": "SSH ops and database tools for DSH Web UI: connect to remote servers via SSH terminal/SFTP/tunnels, and connect to MySQL/PostgreSQL/Redis/MongoDB databases. Host half injects ctx.ssh (mount dsh-ssh-ssh2); client half renders the terminal and database panel.",
+  "version": "0.2.11",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/caoyiwei850/dsh-ssh-ops.git"
+  },
+  "bugs": {
+    "url": "https://github.com/caoyiwei850/dsh-ssh-ops/issues"
+  },
+  "homepage": "https://github.com/caoyiwei850/dsh-ssh-ops#readme",
+  "keywords": [
+    "dsh",
+    "deepseek-harness",
+    "plugin",
+    "ssh",
+    "terminal",
+    "xterm",
+    "ops",
+    "sftp",
+    "database",
+    "mysql",
+    "redis",
+    "mongodb"
+  ],
+  "type": "module",
+  "main": "lib/index.js",
+  "exports": {
+    ".": {
+      "default": "./lib/index.js"
+    },
+    "./typert": {
+      "default": "./lib/typert.js"
+    },
+    "./remote": {
+      "default": "./lib/remote.js"
+    },
+    "./client": {
+      "default": "./lib/client.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "lib",
+    "src",
+    "assets",
+    "cordis.patch.yml",
+    "LICENSE"
+  ],
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    },
+    "client": {
+      "inject": [
+        "@deepseek-ai/dsh-client-runtime",
+        "@deepseek-ai/dsh-client-connection",
+        "@deepseek-ai/dsh-client-ui-slots"
+      ],
+      "platform": "web"
+    }
+  },
+  "dependencies": {
+    "zod": "^4.4.3",
+    "mysql2": "^3.11.0",
+    "pg": "^8.13.0",
+    "redis": "^4.7.0",
+    "mongodb": "^6.10.0"
+  },
+  "peerDependencies": {
+    "@deepseek-ai/dsh-ssh": "*",
+    "@deepseek-ai/dsh-ssh-ssh2": "*",
+    "dsh-ssh-connection": "*"
+  },
+  "peerDependenciesMeta": {
+    "@deepseek-ai/dsh-ssh": {
+      "optional": false
+    },
+    "@deepseek-ai/dsh-ssh-ssh2": {
+      "optional": false
+    },
+    "dsh-ssh-connection": {
+      "optional": false
+    }
+  },
+  "devDependencies": {
+    "@xterm/addon-fit": "0.10.0",
+    "@xterm/xterm": "5.5.0",
+    "esbuild": "^0.24.2",
+    "react": "^18.3.1"
+  },
+  "scripts": {
+    "gen:xterm-css": "node scripts/gen-xterm-css.mjs",
+    "build:host": "node scripts/build-host.mjs",
+    "build:client": "node scripts/build-client.mjs",
+    "build": "npm run gen:xterm-css && npm run build:host && npm run build:client",
+    "test": "node test/safety.mjs && node test/db-safety.mjs && node test/db-ops.mjs",
+    "install:dev": "node scripts/install-dev.mjs",
+    "pack:release": "npm run build && node scripts/package-release.mjs"
+  },
+  "private": true
+}

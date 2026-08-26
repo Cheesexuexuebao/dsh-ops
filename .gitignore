@@ -2,6 +2,9 @@ CLAUDE.local.md
 .env
 node_modules/
 lib/
+# Ops plugins commit Host/client bundles; root `lib/` would otherwise ignore them.
+!dsh-ops-plugins/*/lib/
+!dsh-ops-plugins/*/lib/**
 *.tsbuildinfo
 pnpm-debug.log
 .pnpm-store/

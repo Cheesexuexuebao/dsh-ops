@@ -1,0 +1,3 @@
+Filesystem     1-blocks      Used Available Capacity Mounted on
+/dev/sda1 21474836480 10737418240 10737418240  50% /
+tmpfs           1048576         0   1048576   0% /run
