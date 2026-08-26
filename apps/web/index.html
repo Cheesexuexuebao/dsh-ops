@@ -5,9 +5,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="manifest" href="/manifest.webmanifest" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <title>DeepSeek Harness</title>
+    <title>运维智能体</title>
+    <!-- First-paint ops void: before JS / theme tokens / plugins. -->
+    <style>
+      html, body, #root {
+        height: 100%;
+        margin: 0;
+        background: #07151c !important;
+        color-scheme: dark;
+      }
+    </style>
   </head>
   <body>
+    <script>
+      document.documentElement.style.colorScheme = 'dark'
+      document.body.setAttribute('data-ds-dark-theme', '')
+    </script>
     <div id="root"></div>
     <script type="module" src="/src/main.ts"></script>
   </body>
